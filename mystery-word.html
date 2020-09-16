@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang='en'>
+
+<head>
+    <title>Mystery Word - basic JS game</title>
+    <meta charset='utf-8'>
+</head>
+
+<body>
+
+    <p> Mystery Word: <span name='place' id='place'></span></p>
+
+    <label for='guess'>Guess a letter?</label>
+    <input type='text' name='guess' id='guess'>
+    <button>Try</button>
+    <p> Guesses: </p>
+
+    <script>
+        chosenWord = randomWord();
+        guessLimit = 6;
+        guessNumber = 0;
+        guesses = [];
+
+        // Select a random word
+        function randomWord() {
+            let possibleWords = ['apple', 'avocado', 'sage', 'melon', 'habanero', 'shiso', 'eggplant', 'mint', 'watermelon', 'squash'];
+            chosenWord = possibleWords[Math.floor(Math.random() * possibleWords.length)];
+            placeholder = '*'.repeat(chosenWord.length);
+            document.getElementById('place').innerHTML = placeholder;
+            return chosenWord;
+        }
+
+        // Guess a letter
+        function guessLetter() {
+            guessNumber++;
+            let letterGuess = document.getElementById('guess').value.toLowerCase();
+            guesses.push(letterGuess);
+            partialWord = '';
+
+            // Display guess
+            let newParagraph = document.createElement('p');
+            guessColor = ((!chosenWord.includes(letterGuess)) ? 'red' : 'green');
+            newParagraph.textContent = letterGuess;
+            newParagraph.style.color = guessColor;
+            document.body.appendChild(newParagraph);
+
+            // Display correctly guessed letters
+            if (chosenWord.includes(letterGuess)) {
+                guessColor = 'green'
+                split = chosenWord.split('');
+                for (var i = 0; i < chosenWord.length; i++) {
+                    letter = split[i];
+                    nextLetter = ((guesses.includes(letter)) ? letter : '*');
+                    partialWord += nextLetter;
+                }
+                document.getElementById('place').innerHTML = partialWord;
+            }
+
+            // Reset field for next guess
+            document.getElementById('guess').value = '';
+            document.getElementById('guess').select;
+
+            // If word is completed, game won
+            if (partialWord == chosenWord) {
+                let newParagraph = document.createElement('p');
+                newParagraph.textContent = 'Correct, you won!';
+                newParagraph.style.color = 'green';
+                document.body.appendChild(newParagraph);
+                document.getElementById('guess').disabled = true;
+            }
+
+            // If number of maximum guesses reached, game lost
+            else if (guesses.length == guessLimit) {
+                let newParagraph = document.createElement('p');
+                newParagraph.textContent = 'Game over. maximum tries exceeded';
+                newParagraph.style.color = guessColor;
+                document.body.appendChild(newParagraph);
+                document.getElementById('guess').disabled = true;
+            }
+        }
+
+        const button = document.querySelector('button');
+        button.addEventListener('click', guessLetter);
+    </script>
+
+</body>
+
+</html>
