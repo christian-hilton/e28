@@ -1,8 +1,7 @@
-const app = Vue.createApp({
-    data() {
-        return {
-            item: '',
-            items: [],
-        }
-    }
-}).mount('#app');
+const app = new Vue({
+    el: '#app',
+    data: {
+        item: '',
+        items: [],
+    },
+})
