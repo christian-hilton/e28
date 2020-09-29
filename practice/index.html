@@ -36,9 +36,10 @@
 
         <label>
             Item: <input type='text' v-model='item'>
+            Quantity: <input type='number' v-model='qty'>
         </label>
 
-        <button v-on:click='items.push(item)'>Add</button>
+        <button v-on:click='submitItem'>Add</button>
 
         <div class='no-items' v-if='items.length == 0'>
             You have no items on your list.
