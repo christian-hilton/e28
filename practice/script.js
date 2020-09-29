@@ -1,9 +1,8 @@
-const app = new Vue({
-    el: '#app',
-    data: {
-        playerName: '',
-        guesses: [],
-        guess: null,
-        startGame: false,
+const app = Vue.createApp({
+    data() {
+        return {
+            item: '',
+            items: [],
+        }
     }
-})
+}).mount('#app');
