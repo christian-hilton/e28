@@ -35,10 +35,7 @@ let app = new Vue({
         ['oyster', 'lightgrey', '🦪'],
         ['salmon', 'lightpink', '🍣']
         ],
-        rounds: [
-            // { number: 1, winner: 'Computer', emoji: '🥑' },
-            // { number: 2, winner: 'Player', emoji: '🥑' }
-        ],
+        rounds: [],
         roundnumber: 1,
         guess: '',
         guessNumber: 0,

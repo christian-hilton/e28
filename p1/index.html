@@ -67,7 +67,6 @@
             <input type='text' id='guess' v-model.trim='guess' @keyup.enter='guessLetter'>
             <button @click='guessLetter'>Submit guess</button>
             </br>
-            {{displayWord}}
             </br>
             {{feedbackString}} <button v-if='gameOver' @click='restartGame'>Restart</button>
         </div>
