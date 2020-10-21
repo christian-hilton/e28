@@ -6,18 +6,6 @@ Vue.component('round-detail', {
         }
     },
     props: {
-        // 'round': {
-        //     type: Number,
-        //     default: 1
-        // },
-        // 'number': {
-        //     type: Number,
-        //     default: 0
-        // },
-        // 'winner': {
-        //     type: String,
-        //     default: ''
-        // }
         'roundnumber': {
             type: Number,
             default: 1
@@ -41,7 +29,6 @@ Vue.component('round-detail', {
 let app = new Vue({
     el: '#app',
     data: {
-        words: ['apple', 'avocado', 'sage', 'melon', 'habanero', 'shiso', 'eggplant', 'mint', 'watermelon', 'squash'],
         possibleWords: [['avocado', 'greenyellow', '🥑'],
         ['habanero', 'coral', '🌶'],
         ['eggplant', 'rebeccapurple ', '🍆'],
@@ -57,7 +44,7 @@ let app = new Vue({
         guessNumber: 0,
         guesses: [],
         lastWord: '',
-        guessLimit: 3,
+        guessLimit: 8,
         feedbackString: '',
         gameOver: false,
     },
@@ -114,7 +101,8 @@ let app = new Vue({
                 this.rounds.push({
                     number: this.roundnumber,
                     winner: 'Computer',
-                    emoji: this.wordEmoji
+                    emoji: this.wordEmoji,
+                    color: this.backgroundColor
                 })
                 this.roundnumber++;
             }
@@ -124,7 +112,6 @@ let app = new Vue({
             this.gameOver = false;
             this.guessNumber = 0;
             this.feedbackString = '';
-            console.log('restart');
         }
     }
 });

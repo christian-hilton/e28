@@ -10,14 +10,18 @@
     <script src='script.js' defer></script>
 
     <style>
-        .title {
-            font-family: consolas;
-            font-size: 25px;
-            font-weight: bold;
-        }
-
         [v-cloak] {
             display: none;
+        }
+
+        .description {
+            font-family: helvetica;
+        }
+
+        .title {
+            font-family: helvetica;
+            font-size: 25px;
+            font-weight: bold;
         }
 
         .pass {
@@ -29,14 +33,14 @@
         }
 
         .game {
-            border: gray 2px;
+            border: black 2px;
             border-style: solid;
             padding: 10px;
             margin: 25px;
         }
 
         .feedback {
-            border: gray 2px;
+            border: black 2px;
             border-style: solid;
             padding: 10px;
             margin: 25px;
@@ -46,42 +50,19 @@
 </head>
 
 <body>
-    <!-- TEMPLATE FOR OUR COMPONENT -->
-    <!-- <script type='text/x-template' id='round-detail'>
-    <div v-if='!deleted'>
-        GAME
-        <ul>
-            <li>Round #: TBD</li>
-            <li>Winner: TBD</li>
-            <li>{{number}}</li>
-        </ul>
-        <button @click='deleteRound'>Delete round</button>
-    </div>
-    </script> -->
-    <!-- v-if='this.round!=1' -->
-
-    <!-- TEMPLATE FOR OUR COMPONENT -->
     <script type='text/x-template' id='round-detail'>
-                <p>
+                <p class='description' v-bind:style='{color}'>
                     <ul>
                     <li>Round {{roundnumber}}, Winner: {{winner}} {{emoji}}</li>
                     </li>
                 </ul>
             </p>
-                <!-- <button @click='deleteRoundZ'>Delete round</button> -->
       </script>
 
     <div id='app' v-cloak>
-        <!-- <round-detail>Hello {{number}}</round-detail> -->
-        <!-- <div>
-            <game-detail></game-detail>
-        </div>
-        <div>
-            <feedback-detailz></feedback-detailz>
-        </div> -->
-        <div class="game" v-bind:style="{ backgroundColor}">
-            <p class='title'>Mystery Word:</p>
-            <p>Guess the word. Hint: color. Guesses remaining: {{guessesLeft}}</p>
+        <div class="game" v-bind:style='{backgroundColor}'>
+            <p class=' title'>Mystery Word:</p>
+            <p class="description">Guess the word. Hint: <b>color</b>. Guesses remaining: {{guessesLeft}}</p>
             {{placeholderWord}}</br>
             <input type='text' id='guess' v-model.trim='guess' @keyup.enter='guessLetter'>
             <button @click='guessLetter'>Submit guess</button>
@@ -93,17 +74,10 @@
         <div class='feedback'>
             <p class='title'>Scoreboard:</p>
             <round-detail v-for='round in rounds' v-bind:key='round.number' v-bind:roundnumber='round.number'
-                v-bind:winner='round.winner' v-bind:emoji='round.emoji'>
+                v-bind:winner='round.winner' v-bind:emoji='round.emoji' v-bind:color='round.color'>
             </round-detail>
         </div>
     </div>
-
-
-    <!-- <p v-for='word in words' v-bind:key='word[0]'>{{word}}</v-for> -->
-
-
-
-
 </body>
 
 </html>
