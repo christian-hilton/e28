@@ -12,18 +12,16 @@
 <script>
 // import ShowProduct from "@/components/ShowProduct.vue";
 import ShowProductPreview from "@/components/ShowProductPreview.vue";
-import { products } from "@/products.js";
+//import { products } from "@/products.js";
+//import { axios } from "@/app.js";
+
 export default {
   name: "",
   components: {
     // "show-product": ShowProduct,
     "show-preview": ShowProductPreview,
   },
-  data: function () {
-    return {
-      products: products,
-    };
-  },
+  props: ["products"],
 };
 </script>
 

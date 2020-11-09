@@ -1,19 +1,22 @@
 <template>
   <div id="product-page">
-    <h1>{{ product.name }}</h1>
-    <show-product :key="product.id" :product="product"></show-product>
+    <div v-if="product">
+      <show-product :product="product" :includeDetails="true"></show-product>
+    </div>
   </div>
 </template>
 
 <script>
-import { products } from "@/products.js";
+// import { products } from "@/products.js";
 import ShowProduct from "@/components/ShowProduct.vue";
 
 export default {
-  props: ["id"], // comes from our dynamic segment
+  name: "",
+  props: ["id", "products"], // comes from our dynamic segment
   data() {
     return {
-      products: products,
+      // product: null,
+      // products: products,
     };
   },
   components: {
@@ -21,7 +24,9 @@ export default {
   },
   computed: {
     product() {
-      return this.products.find((x) => x.id == this.id);
+      return this.products.filter((product) => {
+        return product.id == this.id;
+      }, this.id)[0];
     },
   },
 };

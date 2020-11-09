@@ -5,10 +5,7 @@
         {{ product.name }}
       </a>
     </div>
-    <img
-      class="product-thumb"
-      v-bind:src="require('@/assets/images/products/' + product.id + '.jpg')"
-    />
+    <img class="product-thumb" v-bind:src="imageSource" />
     <!-- <p class="product-description">{{ product.description }}</p>
     <div class="product-price">${{ product.price }}</div> -->
   </div>
@@ -20,6 +17,15 @@ export default {
   props: ["product"],
   data: function () {
     return {};
+  },
+  computed: {
+    imageSource() {
+      try {
+        return require("@/assets/images/products/" + this.product.id + ".jpg");
+      } catch {
+        return require("@/assets/images/products/image-not-available.jpg");
+      }
+    },
   },
 };
 </script>
