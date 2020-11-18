@@ -1,6 +1,6 @@
 # Project 2
 + By: Christian Hilton
-+ Production URL: <http://e28p2.yourdomain.com>
++ Production URL: <http://e28p2.christianh.me>
 
 ## Pages summary
 - Home: home landing page, inclduing upcoming scheduled events. 

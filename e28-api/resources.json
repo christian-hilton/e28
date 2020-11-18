@@ -72,5 +72,69 @@
                 "numeric"
             ]
         }
+    },
+    "restaurant": {
+        "name": {
+            "type": "string",
+            "validators": []
+        },
+        "sku": {
+            "type": "string",
+            "validators": []
+        },
+        "description": {
+            "type": "string",
+            "validators": []
+        },
+        "categories": {
+            "type": "string",
+            "validators": []
+        },
+        "location": {
+            "type": "string",
+            "validators": []
+        },
+        "image_URL": {
+            "type": "string",
+            "validators": []
+        },
+        "URL": {
+            "type": "string",
+            "validators": []
+        },
+        "date": {
+            "type": "string",
+            "validators": []
+        }
+    },
+    "place": {
+        "name": {
+            "type": "string",
+            "validators": []
+        },
+        "sku": {
+            "type": "string",
+            "validators": []
+        },
+        "description": {
+            "type": "string",
+            "validators": []
+        },
+        "categories": {
+            "type": "string",
+            "validators": []
+        },
+        "image_URL": {
+            "type": "string",
+            "validators": []
+        },
+        "URL": {
+            "type": "string",
+            "validators": []
+        },
+        "date": {
+            "type": "string",
+            "validators": []
+        }
     }
 }
