@@ -5,7 +5,6 @@
     </div>
     <img class="restaurant-thumb" width="500" v-bind:src="place.image_URL" />
     <p class="restaurant-description">{{ place.description }}</p>
-    <p>View</p>
   </div>
 </template> 
 
