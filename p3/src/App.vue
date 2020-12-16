@@ -12,23 +12,16 @@
       </router-link>
     </nav>
 
-    <router-view
-      v-bind:restaurants="restaurants"
-      v-bind:places="places"
-      v-on:update-restaurants="updateData()"
-    ></router-view>
+    <router-view v-bind:restaurants="restaurants"></router-view>
   </div>
 </template>
 
 <script>
-import { axios } from "@/common/app.js";
 
 export default {
   name: "App",
   data() {
     return {
-      restaurants: [],
-      places: [],
 
       /* Store links in an array to maintain order */
       links: ["home", "restaurants", "destinations", "account", "new"],
@@ -44,21 +37,18 @@ export default {
       },
     };
   },
-  methods: {
-    updateData() {
-      axios.get("restaurant").then((response) => {
-        this.restaurants = response.data.restaurant;
-        console.log(this.restaurants);
-      });
-      axios.get("place").then((response) => {
-        this.places = response.data.place;
-        console.log(this.places);
-      });
-    },
-  },
   mounted() {
-    this.updateData();
+    this.$store.dispatch('fetchRestaurants');
+    this.$store.dispatch('fetchPlaces');
   },
+    computed: {
+        restaurants() {
+            return this.$store.state.restaurants;
+        },
+        places() {
+            return this.$store.state.places;
+        }
+    }
 };
 </script>
 

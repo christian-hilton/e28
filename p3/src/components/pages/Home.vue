@@ -18,8 +18,13 @@ export default {
   data: function () {
     return {};
   },
-  props: ["places", "restaurants"],
   computed: {
+   restaurants() {
+            return this.$store.state.restaurants;
+        },
+    places() {
+            return this.$store.state.places;
+        },
     upcomingRestaurants() {
       return this.restaurants.filter((restaurant) => {
         return restaurant.date != null;

@@ -1,6 +1,6 @@
 <template>
   <div class="place">
-    <div class="place-name">
+    <div class="place-name" data-test="place-name">
       <h2>{{ place.name }}</h2>
     </div>
     <img class="restaurant-thumb" width="500" v-bind:src="place.image_URL" />

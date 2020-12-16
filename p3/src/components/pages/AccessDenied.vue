@@ -1,5 +1,6 @@
 <template>
     <div>
-        <h1>Access Denied</h1>
+        <h2>Access Denied</h2>
+        <p>Please log in first to access this page</p>
     </div>
 </template>

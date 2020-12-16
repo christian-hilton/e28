@@ -1,6 +1,6 @@
 <template>
   <div class="restaurant">
-    <div class="restaurant-name">
+    <div class="restaurant-name" data-test="restaurant-name">
       <h2>{{ restaurant.name }} - {{ restaurant.location }}</h2>
     </div>
     <div>

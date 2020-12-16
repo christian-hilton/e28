@@ -17,7 +17,11 @@ export default {
   data: function () {
     return {};
   },
-  props: ["places"],
+  computed: {
+    places() {
+       return this.$store.state.places;
+        },
+  }
 };
 </script>
 

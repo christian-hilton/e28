@@ -32,16 +32,6 @@ export default {
   },
   props: ["upcomingRestaurants", "upcomingPlaces"],
   computed: {
-    // upcomingRestaurants() {
-    //   return this.restaurants.filter((restaurant) => {
-    //     return restaurant.date != null;
-    //   });
-    // },
-    // upcomingPlaces() {
-    //   return this.places.filter((place) => {
-    //     return place.date != null;
-    //   });
-    // },
     numberUpcoming() {
       return this.upcomingPlaces.length + this.upcomingRestaurants.length;
     },

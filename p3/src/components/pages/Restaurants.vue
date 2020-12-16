@@ -21,7 +21,15 @@ export default {
   data: function () {
     return {};
   },
-  props: ["restaurants"],
+  // props: ["restaurants"],
+  computed: {
+        restaurants() {
+            return this.$store.state.restaurants;
+        },
+        places() {
+            return this.$store.state.places;
+        }
+    }
 };
 </script>
 

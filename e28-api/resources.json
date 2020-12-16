@@ -76,15 +76,26 @@
     "restaurant": {
         "name": {
             "type": "string",
-            "validators": []
+            "validators": [
+                "required",
+                "min:3",
+                "max:100"
+            ]
         },
         "sku": {
             "type": "string",
-            "validators": []
+            "validators": [
+                "required",
+                "min:3",
+                "max:100"
+            ]
         },
         "description": {
             "type": "string",
-            "validators": []
+            "validators": [
+                "required",
+                "min:10"
+            ]
         },
         "categories": {
             "type": "string",
@@ -92,7 +103,10 @@
         },
         "location": {
             "type": "string",
-            "validators": []
+            "validators": [
+                "required",
+                "min:10"
+            ]
         },
         "image_URL": {
             "type": "string",

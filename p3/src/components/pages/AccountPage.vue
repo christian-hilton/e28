@@ -31,7 +31,7 @@
                 /></label>
             </div>
 
-            <button @click="login">Login</button>
+            <button @click="login" data-test="login-button">Login</button>
 
             <ul v-if="errors">
                 <li class="error" v-for="(error, index) in errors" :key="index">
@@ -81,16 +81,16 @@ export default {
                 password: 'asdfasdf',
             },
             errors: null,
-            favorites: null,
+            favorites: [],
         };
     },
     computed: {
         user() {
             return this.$store.state.user;
         },
-        products() {
-            return this.$store.state.products;
-        },
+        // products() {
+        //     return this.$store.state.products;
+        // },
     },
     methods: {
         login() {
@@ -120,29 +120,25 @@ export default {
                 }
             });
         },
+        loadFavorites() {
+            if (this.user) {
+                // Because favorite is a auth-protected resource, this will
+                // only return favorites belonging to the authenticated user
+                axios.get('favorite').then(response => {
+                    this.favorites = response.data.favorite.map(favorite => {
+                        return this.$store.getters.getRestaurantById(
+                            favorite.product_id
+                        );
+                    });
+                });
+            }
+        },
     },
     watch: {
         // When user changes, update favorites
         user() {
-            if (this.user) {
-                this.favorites = [];
-
-                axios
-                    .get('favorite/query', {
-                        params: { user_id: this.user.id },
-                    })
-                    .then((response) => {
-                        // Iterate through the favorites (response.data.results), loading the product information for each favorite
-                        this.favorites = response.data.results.map(
-                            (favorite) => {
-                                return this.$store.getters.getProductById(
-                                    favorite.product_id
-                                );
-                            }
-                        );
-                    });
-            }
-        },
+            this.loadFavorites();
+        }
     }
 };
 </script>
