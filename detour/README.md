@@ -3,10 +3,15 @@
 + Production URL: <http://e28p2.christianh.me>
 
 ## Pages summary
-- Home: home landing page, inclduing upcoming scheduled events. 
+- Home: home landing page, inclduing upcoming scheduled events (Home.vue)
+- Restaurants: Lists all restaurants (Restaurants.vue)
+- Places: Lists all Places (Places.vue)
+- New: Add a new Restauran (NewRestaurant.vue)
 
 ## SFC summary
-*List the SFCs of your application*
+- ShowPlace.vue: Shows a Place, used on Places page
+- ShowResturant.vue: Shows a Restaurant, used on Restaurants page
+- ShowUpcoming.vue: Shows Places and Restaurants which have a date set, used on Home page. 
   
 ## Server interaction
 - Application fetches Restaurant and Place data from e28-API, which was modified to support these new entities. 
