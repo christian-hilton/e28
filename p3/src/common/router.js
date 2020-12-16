@@ -23,21 +23,11 @@ const routes = [
         path: '/places',
         component: () => import('@/components/pages/Places.vue'),
     },
-    // {
-    //     path: '/products/:id',
-    //     component: () => import('@/components/pages/ProductPage.vue'),
-    //     props: true,
-    // },
     {
         path: '/account',
         component: () => import('@/components/pages/AccountPage.vue'),
     },
-    // {
-    //     path: '/cart',
-    //     component: () => import('@/components/pages/CartPage.vue'),
-    // },
     {
-        // This is a route we can direct the user to if they try to access a part of the site they don't have privileges for
         path: '/denied',
         component: () => import('@/components/pages/AccessDenied.vue'),
     },
@@ -54,8 +44,6 @@ const router = new VueRouter({
 // Ref: https://router.vuejs.org/guide/advanced/navigation-guards.html
 router.beforeEach(async (to, from, next) => {
 
-    // Exact the meta information from our routes
-    // Ref: https://router.vuejs.org/guide/advanced/meta.html#route-meta-fields
     const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
     if (requiresAuth && !store.state.user) {
