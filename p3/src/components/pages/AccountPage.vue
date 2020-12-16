@@ -88,13 +88,9 @@ export default {
         user() {
             return this.$store.state.user;
         },
-        // products() {
-        //     return this.$store.state.products;
-        // },
     },
     methods: {
         login() {
-            // console.log("login");
             axios.post('login', this.data).then((response) => {
                 if (response.data.authenticated) {
                     this.$store.commit('setUser', response.data.user);
@@ -104,7 +100,6 @@ export default {
             });
         },
         register() {
-            // console.log("login");
             axios.post('register', this.data).then((response) => {
                 if (response.data.success) {
                     this.$store.commit('setUser', response.data.user);
@@ -122,8 +117,6 @@ export default {
         },
         loadFavorites() {
             if (this.user) {
-                // Because favorite is a auth-protected resource, this will
-                // only return favorites belonging to the authenticated user
                 axios.get('favorite').then(response => {
                     this.favorites = response.data.favorite.map(favorite => {
                         return this.$store.getters.getRestaurantById(
@@ -139,6 +132,9 @@ export default {
         user() {
             this.loadFavorites();
         }
+    },
+    mounted() {
+        this.loadFavorites();
     }
 };
 </script>
